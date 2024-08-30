@@ -3,7 +3,7 @@ import Link from 'next/link'
 import Image from 'next/image'
 export default function Header(){
     return(
-        <div className={styles.Header}>
+        <div className={styles.header}>
             <nav className={styles.navbar}>
                 <Link href='/' className={styles.nav_logo}>
                 <Image src='/logo.png' width={64} height={64}></Image>
