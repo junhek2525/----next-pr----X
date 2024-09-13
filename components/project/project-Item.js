@@ -57,6 +57,10 @@ export default function ProjectItem({data}){
                         
                         {description}
                     </Typography>
+                    <Typography variant="body3" sx={{color: 'text.secondary'}}>
+                        
+                      {tags.map((aTag) => (<span key={aTag.id}>#{aTag.name} </span>))}
+                    </Typography>
                 </CardContent>
                 <CardActions>
                     <Button size="small" onClick={()=>{router.push(github)}}>Visit Github</Button>
