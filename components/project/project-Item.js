@@ -15,7 +15,8 @@ export default function ProjectItem({data}){
     const description = data.properties?.설명.rich_text[0].plain_text;
     const github = data.properties?.github.url;
     const imgSrc = data.cover.file?.url || data.cover.external.url;
-
+    const demo = data.properties?.Demo.url;
+    console.log(demo)
     const router = useRouter();
 
     function conutWorkDays(start,end){
@@ -37,7 +38,7 @@ export default function ProjectItem({data}){
     console.log(tags);
     return(
         
-            <Card sx={{width : 345}}>
+            <Card sx={{width : 345,display:'flex', flexDirection:'column',justifyContent:'space-bet'}}>
                 <CardMedia
                 sx={{height : 300}}
                 image={imgSrc}
@@ -45,7 +46,7 @@ export default function ProjectItem({data}){
                 />
                     
                 
-                <CardContent>
+                <CardContent sx={{ flexGrow: 1}}>
                     <Typography gutterBottom variant="h5" component="div">
                         {title}
                     </Typography>
@@ -63,6 +64,8 @@ export default function ProjectItem({data}){
                     </Typography>
                 </CardContent>
                 <CardActions>
+                    {demo &&
+                (<Button size="small" onClick={()=>{router.push(demo)}}>View Demo</Button>)}
                     <Button size="small" onClick={()=>{router.push(github)}}>Visit Github</Button>
                 </CardActions>
             </Card> 
