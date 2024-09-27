@@ -6,6 +6,8 @@ import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import { useRouter } from 'next/router';
 
+import styles from './project-item.module.css';
+
 
 export default function ProjectItem({data}){
     const title = data.properties.이름.title[0].plain_text;
@@ -16,6 +18,7 @@ export default function ProjectItem({data}){
     const github = data.properties?.github.url;
     const imgSrc = data.cover.file?.url || data.cover.external.url;
     const demo = data.properties?.Demo.url;
+    const imgUrl = data.properties?.Image.url;
     console.log(demo)
     const router = useRouter();
 
@@ -33,15 +36,15 @@ export default function ProjectItem({data}){
         }
         return workdays;
     }
-    const workDay = conutWorkDays(start,end)
+    const workDay = conutWorkDays(start,end);
 
     console.log(tags);
     return(
         
-            <Card sx={{width : 345,display:'flex', flexDirection:'column',justifyContent:'space-bet'}}>
+            <Card className={styles.cardItem} sx={{width : 345,display:'flex', flexDirection:'column',justifyContent:'space-bet'}}>
                 <CardMedia
                 sx={{height : 300}}
-                image={imgSrc}
+                image={imgUrl}
                 title={title}
                 />
                     
